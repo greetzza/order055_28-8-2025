@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Greeting Card</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Graduation!</h1>
+        <p class="instruction" id="ins">Click on the image below to reveal your card</p>
+        
+        <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+             alt="Greeting Card" 
+             class="card-image"
+             id="cardTrigger">
+        
+        <div class="card-content" id="cardContent">
+            <h2>"happy graduation Adam!🤍"</h2>
+          <p>Hi duuutt! first of all i just wanna say congraduation sayang. finally ur hard work, all the tears, and sleepless nights have paid off. this is not the end of everything but it’s beginning. </p>
+<p>inget no matter small or big ur wins but u should be proud of urself okay. u’ll be win in life, achieve all ur dreams, n get everything what u want, that’s i pray for. i’m so proud for everything ur achieved. i’m so proud of how ur surviving that day. tetep jadi orang rendah hati, penyayang, penolong. jangan lupa Tuhan dan tetep berdoa yaa</p>
+<p>every step u take, Allah, mama papa, ur fams also akuuu always by ur side. don’t doubt ur self. u did verrrryy great. take a rest n semangat kerja wkwkwk. can’t wait to celebrate many more milestones with u!!</p>
+<p>i love u more than 3000 </p>
+            <p class="signature">With love,<br>Natasha</p>
+            
+            <div class="music-control">
+                <button id="playBtn">Play Music</button>
+                <button id="pauseBtn">Pause Music</button>
+            </div>
+            
+            <div class="gallery" id="gallery">
+                <h3>Memories</h3>
+                <div class="masonry">
+                    <div class="masonry-item">
+                        <img src="fotoos.JPG" alt="Memory 1">
+                    </div>
+                </div>
+              <div class="masonry">
+                    <div class="masonry-item">
+                        <img src="fotoos.JPG" alt="Memory 1">
+                    </div>
+                </div>
+              <div class="masonry">
+                    <div class="masonry-item">
+                        <img src="fotoos.JPG" alt="Memory 1">
+                    </div>
+                </div>
+              <div class="masonry">
+                    <div class="masonry-item">
+                        <img src="fotoos.JPG" alt="Memory 1">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <audio id="bgMusic" loop>
+        <source src="mangu.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <script>
+        const cardTrigger = document.getElementById('cardTrigger');
+        const cardContent = document.getElementById('cardContent');
+        const gallery = document.getElementById('gallery');
+        const bgMusic = document.getElementById('bgMusic');
+        const playBtn = document.getElementById('playBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        
+        // Create confetti elements
+        function createConfetti() {
+            const colors = ['#111', '#333', '#555', '#777', '#999', '#bbb', '#ddd'];
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = Math.random() * 8 + 4 + 'px';
+                confetti.style.height = Math.random() * 8 + 4 + 'px';
+                document.body.appendChild(confetti);
+                
+                // Animate confetti
+                setTimeout(() => {
+                    confetti.style.opacity = '1';
+                    confetti.style.transform = `translate(${Math.random() * 100 - 50}px, ${Math.random() * 200 + 100}px) rotate(${Math.random() * 360}deg)`;
+                    confetti.style.transition = `all ${Math.random() * 3 + 2}s ease`;
+                    
+                    // Remove confetti after animation
+                    setTimeout(() => {
+                        confetti.style.opacity = '0';
+                        setTimeout(() => {
+                            confetti.remove();
+                        }, 1000);
+                    }, 3000);
+                }, 0);
+            }
+        }
+        
+        cardTrigger.addEventListener('click', function() {
+            // Hide the trigger image
+            this.style.display = 'none';
+            
 
+            ins.style.display = 'none';
+            // Show the card content
+            cardContent.style.display = 'block';
+            
+            // Show the gallery
+            gallery.style.display = 'block';
+            
+            // Change background color
+            document.body.style.backgroundColor = '#eee';
+            
+            // Create confetti effect
+            createConfetti();
+            
+            // Play music
+            bgMusic.play();
+        });
+        
+        playBtn.addEventListener('click', function() {
+            bgMusic.play();
+        });
+        
+        pauseBtn.addEventListener('click', function() {
+            bgMusic.pause();
+        });
+    </script>
+</body>
+</html>
